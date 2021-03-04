@@ -10,6 +10,11 @@ public class CharacterController : MonoBehaviour
     public float jumpForce = 5;
     public bool isGrounded;
     private Animator heroAnimator;
+    public LayerMask whatIsGround;
+    public Transform groundCheck;
+    public Transform headCheck;
+    private float groundRadius = 0.3f;
+    private float headRadius = 0.3f;
 
     void Start()
     {
@@ -19,6 +24,8 @@ public class CharacterController : MonoBehaviour
     {
         MoveLeftRight();
         Jump();
+        GroundCheck();
+        HeadCheck();
     }
     public void MoveLeftRight()
     {
@@ -71,4 +78,14 @@ public class CharacterController : MonoBehaviour
             heroAnimator.SetBool("isJumping", false);
         }
     }
+    void GroundCheck()
+    {
+        Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+        isGrounded = (bool)colliderWeCollidedWith;
+    }
+    void HeadCheck()
+    {
+        Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(headCheck.position, headRadius, whatIsGround);
+    }
 }
+
