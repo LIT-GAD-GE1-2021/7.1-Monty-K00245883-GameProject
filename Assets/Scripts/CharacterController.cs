@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
     public float speed = 5;
     public float jumpForce = 5;
     public bool isGrounded;
+    public bool facingRight;
     private Animator heroAnimator;
     public LayerMask whatIsGround;
     public Transform groundCheck;
@@ -19,6 +20,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         heroAnimator = hero.GetComponent<Animator>();
+        facingRight = false;
     }
     void Update()
     {
@@ -35,6 +37,7 @@ public class CharacterController : MonoBehaviour
             heroRB.velocity = new Vector2(-speed, 0);
             theScale.x = -1;
             transform.localScale = theScale;
+            facingRight = false;
             if (isGrounded == true)
             {
                 heroAnimator.SetBool("isWalking", true);
@@ -50,6 +53,7 @@ public class CharacterController : MonoBehaviour
             heroRB.velocity = new Vector2(speed, 0);
             theScale.x = 1;
             transform.localScale = theScale;
+            facingRight = true;
             if (isGrounded == true)
             {
                 heroAnimator.SetBool("isWalking", true);
@@ -86,6 +90,10 @@ public class CharacterController : MonoBehaviour
     void HeadCheck()
     {
         Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(headCheck.position, headRadius, whatIsGround);
+    }
+    public void Flip()
+    {
+        facingRight = !facingRight;
     }
 }
 
