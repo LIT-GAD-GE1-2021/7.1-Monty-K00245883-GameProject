@@ -4,88 +4,78 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public Rigidbody2D heroRB;
-    public GameObject hero;
-    public float speed = 5;
+    public float moveSpeed = 5;
     public float jumpForce = 5;
-    public bool isGrounded;
-    public bool facingRight;
-    private Animator heroAnimator;
-    public LayerMask whatIsGround;
-    public Transform groundCheck;
-    public Transform headCheck;
     private float groundRadius = 0.3f;
     private float headRadius = 0.3f;
+    private float move;
+    private bool duck;
+    public bool isGrounded;
+    public bool facingRight;
+    public Rigidbody2D heroRB;
+    public GameObject hero;
+    private Animator heroAnimator;
+    public LayerMask whatIsGround;
+    private Transform heroPivot;
+    public Transform groundCheck;
+    public Transform headCheck;
+
 
     void Start()
     {
         heroAnimator = hero.GetComponent<Animator>();
-        facingRight = false;
+        heroPivot = hero.GetComponent<Transform>();
+        facingRight = true;
     }
     void Update()
     {
         MoveLeftRight();
         Jump();
+        Duck();
         GroundCheck();
         HeadCheck();
     }
     public void MoveLeftRight()
     {
-        Vector3 theScale = transform.localScale;
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        move = Input.GetAxis("Horizontal");
+        heroAnimator.SetFloat("Speed", Mathf.Abs(move));
+        heroRB.velocity = new Vector2(move * moveSpeed, heroRB.velocity.y);
+        if (move > 0 && !facingRight)
         {
-            heroRB.velocity = new Vector2(-speed, 0);
-            theScale.x = -1;
-            transform.localScale = theScale;
-            facingRight = false;
-            if (isGrounded == true)
-            {
-                heroAnimator.SetBool("isWalking", true);
-            }
-            else
-            {
-                heroRB.velocity = new Vector2(heroRB.velocity.x, -speed);
-            }
-
+            Flip();
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        else if (move < 0 && facingRight)
         {
-            heroRB.velocity = new Vector2(speed, 0);
-            theScale.x = 1;
-            transform.localScale = theScale;
-            facingRight = true;
-            if (isGrounded == true)
-            {
-                heroAnimator.SetBool("isWalking", true);
-            }
-            else
-            {
-                heroRB.velocity = new Vector2(heroRB.velocity.x, -speed);
-            }
+            Flip();
         }
-        else
-        {
-            heroAnimator.SetBool("isWalking", false);
-        }
-
     }
     void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded == true)
+        heroAnimator.SetFloat("VSpeed", heroRB.velocity.y);
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            heroAnimator.SetBool("isWalking", false);
-            heroAnimator.SetBool("isJumping", true);
+            heroAnimator.SetBool("Ground", isGrounded);
             heroRB.velocity = new Vector2(heroRB.velocity.x, jumpForce);
         }
-        else
+    }
+    void Duck()
+    {
+        duck = Input.GetButton("Fire1");
+
+        if (duck == true)
         {
-            heroAnimator.SetBool("isJumping", false);
+            heroAnimator.SetBool("Duck", true);
+        }
+        else if (duck == false)
+        {
+            heroAnimator.SetBool("Duck", false);
         }
     }
     void GroundCheck()
     {
         Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         isGrounded = (bool)colliderWeCollidedWith;
+        heroAnimator.SetBool("Ground", isGrounded);
     }
     void HeadCheck()
     {
@@ -94,6 +84,9 @@ public class CharacterController : MonoBehaviour
     public void Flip()
     {
         facingRight = !facingRight;
+        Vector3 theScale = heroPivot.transform.localScale;
+        theScale.x *= -1;
+        heroPivot.transform.localScale = theScale;
     }
 }
 

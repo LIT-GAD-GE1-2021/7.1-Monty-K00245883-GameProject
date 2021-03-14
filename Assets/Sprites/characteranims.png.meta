@@ -4,37 +4,64 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5239744517119846578
-    second: idle_0
-  - first:
-      213: 4822358351653347760
     second: idle_1
   - first:
-      213: 4259819960014420716
+      213: 4822358351653347760
     second: idle_2
   - first:
-      213: -8409838336283256209
+      213: 4259819960014420716
     second: idle_3
   - first:
+      213: -8409838336283256209
+    second: jump_1
+  - first:
       213: 6882847309669281237
-    second: walk_1
+    second: jump_2
   - first:
       213: -8736728599985524712
-    second: walk_2
+    second: jump_3
   - first:
       213: -7926648674497241986
-    second: walk_3
+    second: jump_4
   - first:
       213: 3826992270004806206
-    second: walk_4
+    second: walk_1
   - first:
       213: -6392757773307686738
+    second: walk_2
+  - first:
+      213: 3369809550684314316
+    second: walk_3
+  - first:
+      213: 4878633349767341464
+    second: walk_4
+  - first:
+      213: -4982523742747667941
     second: walk_5
+  - first:
+      213: 3042884617785701509
+    second: duck_2
+  - first:
+      213: -2073311921948404629
+    second: duck_1
+  - first:
+      213: 3184750158364324102
+    second: duckwalk_1
+  - first:
+      213: 4390765402912359389
+    second: duckwalk_2
+  - first:
+      213: -9122144758159636107
+    second: duckwalk_3
+  - first:
+      213: 3115281331757745242
+    second: duckwalk_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -69,7 +96,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -93,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,15 +143,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_0
+      name: idle_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 33
-        width: 16
+        y: 64
+        width: 24
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -137,15 +164,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_1
+      name: idle_2
       rect:
         serializedVersion: 2
-        x: 18
-        y: 33
-        width: 17
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 24
+        y: 64
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -158,15 +185,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_2
+      name: idle_3
       rect:
         serializedVersion: 2
-        x: 37
-        y: 33
-        width: 17
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 48
+        y: 64
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,15 +206,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_3
+      name: jump_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 33
-        width: 16
+        x: 72
+        y: 64
+        width: 24
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -200,15 +227,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_1
+      name: jump_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 17
+        x: 96
+        y: 64
+        width: 24
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -221,15 +248,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_2
+      name: jump_3
       rect:
         serializedVersion: 2
-        x: 19
-        y: 0
-        width: 20
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 120
+        y: 64
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -242,15 +269,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_3
+      name: jump_4
       rect:
         serializedVersion: 2
-        x: 40
-        y: 1
-        width: 22
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 144
+        y: 64
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -263,15 +290,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_4
+      name: walk_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 1
-        width: 18
-        height: 31
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 32
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -284,15 +311,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_5
+      name: walk_2
       rect:
         serializedVersion: 2
-        x: 86
-        y: 1
-        width: 19
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 24
+        y: 32
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,10 +331,199 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: walk_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccad14daee7f3ce20800000000000000
+      internalID: 3369809550684314316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 32
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895a14afe2364b340800000000000000
+      internalID: 4878633349767341464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b125394fd058adab0800000000000000
+      internalID: -4982523742747667941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duck_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 32
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584fd9f107f7a3a20800000000000000
+      internalID: 3042884617785701509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duck_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b64dea7bacd1a33e0800000000000000
+      internalID: -2073311921948404629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckwalk_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601bcaf3561823c20800000000000000
+      internalID: 3184750158364324102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckwalk_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd38aa4eed12fec30800000000000000
+      internalID: 4390765402912359389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckwalk_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57904347ca1a76180800000000000000
+      internalID: -9122144758159636107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: duckwalk_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5483d2add3bb3b20800000000000000
+      internalID: 3115281331757745242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c8e2e90bbc6f78949bc62b1e60260118
+    spriteID: 2985bb4ba3153ee478490410e52e3c1e
     internalID: 0
     vertices: []
     indices: 
