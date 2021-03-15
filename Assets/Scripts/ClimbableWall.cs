@@ -17,15 +17,16 @@ public class ClimbableWall : MonoBehaviour
 
     private float vAxis;
     private float hAxis;
+    public GameObject hero;
     private Rigidbody2D theRigidBody;
     private CharacterController player;
     private Animator theAnimator;
 
     void Start()
     {
-        theRigidBody = GetComponent<Rigidbody2D>();
-        theAnimator = GetComponent<Animator>();
-        player = GetComponent<CharacterController>();
+        theRigidBody = hero.GetComponent<Rigidbody2D>();
+        theAnimator = hero.GetComponent<Animator>();
+        player = hero.GetComponent<CharacterController>();
     }
 
     void Update()
