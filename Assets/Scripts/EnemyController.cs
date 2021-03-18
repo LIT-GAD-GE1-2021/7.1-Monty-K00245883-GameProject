@@ -12,12 +12,19 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         enemyPivot = this.GetComponent<Transform>();
-        facingRight = false;
+        startingDirection = enemyPivot.transform.localScale;
+        if (startingDirection.x == 1)
+        {
+            facingRight = false;
+        }
+        else
+        {
+            facingRight = true;
+        }
     }
     void Update()
     {
         Patrol();
-
     }
     void Patrol()
     {
@@ -30,20 +37,20 @@ public class EnemyController : MonoBehaviour
             enemyRB.AddForce(Vector2.left * enemySpeed);
         }
     }
-    /**
+
    private void OnCollisionEnter2D(Collision2D collision)
    {
-       if (collision.gameObject.tag == "Wall")
-       {
-           Flip();
-       }
+        if (collision.otherCollider is BoxCollider2D)
+        {
+            Flip();
+        }
    }
-void Flip()
+    void Flip()
    {
        facingRight = !facingRight;
        Vector3 theScale = enemyPivot.transform.localScale;
        theScale.x *= -1;
        enemyPivot.transform.localScale = theScale;
    }
-  **/
+
 }
