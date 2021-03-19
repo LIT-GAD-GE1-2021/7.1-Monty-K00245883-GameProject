@@ -60,7 +60,7 @@ public class CharacterController : MonoBehaviour
     }
     void Duck()
     {
-        duck = Input.GetButton("Fire1");
+        duck = Input.GetButton("Fire3");
 
         if (duck == true)
         {
