@@ -198,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c171c74d0a544e24ab0b95c112e65262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 10
   isGrounded: 0
   facingRight: 0
   heroRB: {fileID: 199610813}
@@ -262,9 +260,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1353647051
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5239744517119846578, guid: 88b321de139a9f243992e8b53a20b836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -21096,6 +21094,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c770ce288aed7994c924508562903119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyKnockback: {x: 200, y: 10}
+  batDamage: 0
+  ratDamage: 0
+  heroHealth: 0
+  heroSpeed: 5
+  heroJumpForce: 10
 --- !u!4 &1170680339
 Transform:
   m_ObjectHideFlags: 0
