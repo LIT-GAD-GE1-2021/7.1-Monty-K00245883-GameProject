@@ -17,10 +17,10 @@ TagManager:
   - 
   - Ground
   - Ladders
-  - Lights
-  - Platforms
-  - Character
-  - Interactables
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -43,21 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ladders
+    uniqueID: 1353647051
+    locked: 0
   - name: UI
     uniqueID: 1768606939
     locked: 0
   - name: Character
     uniqueID: 1463921385
-    locked: 0
-  - name: Ladders
-    uniqueID: 1353647051
-    locked: 0
-  - name: Platforms
-    uniqueID: 1110117951
-    locked: 0
-  - name: GroundMap
-    uniqueID: 3739868781
-    locked: 0
-  - name: BGMap
-    uniqueID: 3221123923
     locked: 0
