@@ -38,6 +38,7 @@ public class ClimbableWall : MonoBehaviour
     private void FixedUpdate()
     {
         WallHitCheck();
+        Animate();
         if (vAxis > 0 && atWall)
         {
             theRigidBody.velocity = Vector2.up * climbSpeed;
@@ -67,6 +68,17 @@ public class ClimbableWall : MonoBehaviour
         }
     }
 
+    private void Animate()
+    {
+        if (atWall)
+        {
+            theAnimator.SetBool("AtWall", true);
+        }
+        else
+        {
+            theAnimator.SetBool("AtWall", false);
+        }
+    }
     private void WallHitCheck()
     {
         RaycastHit2D rayHit;

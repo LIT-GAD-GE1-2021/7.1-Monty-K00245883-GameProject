@@ -56,6 +56,24 @@ TextureImporter:
   - first:
       213: 3115281331757745242
     second: duckwalk_4
+  - first:
+      213: -452962800422742590
+    second: damage_1
+  - first:
+      213: -1625279907207487273
+    second: climb_dismount
+  - first:
+      213: -1188334948329716306
+    second: climbing_on
+  - first:
+      213: 4975981141097368148
+    second: climb_1
+  - first:
+      213: -1956977445686388271
+    second: damage_2
+  - first:
+      213: -7206312216864551622
+    second: climb_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -148,7 +166,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -167,9 +185,9 @@ TextureImporter:
       name: idle_2
       rect:
         serializedVersion: 2
-        x: 24
+        x: 23
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -188,9 +206,9 @@ TextureImporter:
       name: idle_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 46
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -209,9 +227,9 @@ TextureImporter:
       name: jump_1
       rect:
         serializedVersion: 2
-        x: 72
+        x: 69
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -230,9 +248,9 @@ TextureImporter:
       name: jump_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 92
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -251,9 +269,9 @@ TextureImporter:
       name: jump_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 115
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -272,9 +290,9 @@ TextureImporter:
       name: jump_4
       rect:
         serializedVersion: 2
-        x: 144
+        x: 138
         y: 64
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -295,7 +313,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -314,9 +332,9 @@ TextureImporter:
       name: walk_2
       rect:
         serializedVersion: 2
-        x: 24
+        x: 23
         y: 32
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -335,9 +353,9 @@ TextureImporter:
       name: walk_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 46
         y: 32
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -356,9 +374,9 @@ TextureImporter:
       name: walk_4
       rect:
         serializedVersion: 2
-        x: 72
+        x: 69
         y: 32
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -377,9 +395,9 @@ TextureImporter:
       name: walk_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 92
         y: 32
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -398,9 +416,9 @@ TextureImporter:
       name: duck_2
       rect:
         serializedVersion: 2
-        x: 120
+        x: 115
         y: 32
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -421,7 +439,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -440,9 +458,9 @@ TextureImporter:
       name: duckwalk_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 23
         y: 0
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -461,9 +479,9 @@ TextureImporter:
       name: duckwalk_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 46
         y: 0
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -482,9 +500,9 @@ TextureImporter:
       name: duckwalk_3
       rect:
         serializedVersion: 2
-        x: 72
+        x: 69
         y: 0
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -503,9 +521,9 @@ TextureImporter:
       name: duckwalk_4
       rect:
         serializedVersion: 2
-        x: 96
+        x: 92
         y: 0
-        width: 24
+        width: 23
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -516,6 +534,132 @@ TextureImporter:
       bones: []
       spriteID: a5483d2add3bb3b20800000000000000
       internalID: 3115281331757745242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: damage_1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c51650abb0c6b9f0800000000000000
+      internalID: -452962800422742590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: climb_dismount
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 32
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d061561988d179e0800000000000000
+      internalID: -1625279907207487273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: climbing_on
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 64
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea500aa19af228fe0800000000000000
+      internalID: -1188334948329716306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: climb_1
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 32
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45ac624eb7c3e0540800000000000000
+      internalID: 4975981141097368148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: damage_2
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d95964b16b67d4e0800000000000000
+      internalID: -1956977445686388271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: climb_2
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d0b3d28390efb90800000000000000
+      internalID: -7206312216864551622
       vertices: []
       indices: 
       edges: []

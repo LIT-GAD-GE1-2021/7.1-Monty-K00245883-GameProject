@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public float moveSpeed = 5;
-    public float jumpForce = 5;
+
     private float groundRadius = 0.3f;
     private float headRadius = 0.3f;
     private float move;
@@ -39,7 +38,7 @@ public class CharacterController : MonoBehaviour
     {
         move = Input.GetAxis("Horizontal");
         heroAnimator.SetFloat("Speed", Mathf.Abs(move));
-        heroRB.velocity = new Vector2(move * moveSpeed, heroRB.velocity.y);
+        heroRB.velocity = new Vector2(move * LevelManager.instance.heroSpeed, heroRB.velocity.y);
         if (move > 0 && !facingRight)
         {
             Flip();
@@ -55,7 +54,7 @@ public class CharacterController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             heroAnimator.SetBool("Ground", isGrounded);
-            heroRB.velocity = new Vector2(heroRB.velocity.x, jumpForce);
+            heroRB.velocity = new Vector2(heroRB.velocity.x, LevelManager.instance.heroJumpForce);
         }
     }
     void Duck()
@@ -87,6 +86,14 @@ public class CharacterController : MonoBehaviour
         Vector3 theScale = heroPivot.transform.localScale;
         theScale.x *= -1;
         heroPivot.transform.localScale = theScale;
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            heroAnimator.SetTrigger("Damage");
+            heroRB.AddRelativeForce(LevelManager.instance.enemyKnockback);
+        }
     }
 }
 
