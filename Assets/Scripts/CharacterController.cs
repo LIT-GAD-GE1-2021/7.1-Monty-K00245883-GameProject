@@ -14,6 +14,7 @@ public class CharacterController : MonoBehaviour
     public Rigidbody2D heroRB;
     public GameObject hero;
     private Animator heroAnimator;
+    private SpriteRenderer heroSR;
     public LayerMask whatIsGround;
     private Transform heroPivot;
     public Transform groundCheck;
@@ -24,6 +25,7 @@ public class CharacterController : MonoBehaviour
     {
         heroAnimator = hero.GetComponent<Animator>();
         heroPivot = hero.GetComponent<Transform>();
+        heroSR = hero.GetComponent<SpriteRenderer>();
         facingRight = true;
     }
     void Update()
@@ -87,12 +89,36 @@ public class CharacterController : MonoBehaviour
         theScale.x *= -1;
         heroPivot.transform.localScale = theScale;
     }
+
+    IEnumerator FlashDamage()
+    {
+        heroSR.color = LevelManager.instance.heroDMGColour;
+        yield return new WaitForSeconds(0.5f);
+        heroSR.color = new Color(1, 1, 1, 1);
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            heroAnimator.SetTrigger("Damage");
-            heroRB.AddRelativeForce(LevelManager.instance.enemyKnockback);
+            if (facingRight)
+            {
+                heroRB.AddForce(Vector2.left * LevelManager.instance.enemyKnockback, ForceMode2D.Impulse);
+            }
+            else
+            {
+                heroRB.AddForce(Vector2.right * LevelManager.instance.enemyKnockback, ForceMode2D.Impulse);
+            }
+            StartCoroutine(FlashDamage());
+            if (collision.gameObject.name == "Rat")
+            {
+                LevelManager.instance.heroHealth -= LevelManager.instance.ratDamage;
+                Debug.Log(LevelManager.instance.heroHealth);
+            }
+            if (collision.gameObject.name == "Bat")
+            {
+                LevelManager.instance.heroHealth -= LevelManager.instance.batDamage;
+                Debug.Log(LevelManager.instance.heroHealth);
+            }
         }
     }
 }
