@@ -24,7 +24,10 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
-        Patrol();
+        if (LevelManager.isPaused == false)
+        {
+            Patrol();
+        }
     }
     void Patrol()
     {

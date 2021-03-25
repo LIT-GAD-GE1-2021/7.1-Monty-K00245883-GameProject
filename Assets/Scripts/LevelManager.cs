@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    public static bool isPaused;
     public float enemyKnockback = 5;
     public float batDamage = 1;
     public float ratDamage = 2;
@@ -14,13 +15,36 @@ public class LevelManager : MonoBehaviour
     public float heroJumpForce = 10;
     public Color heroDMGColour;
     public Image UIhealthBar;
+    public GameObject pauseScreen;
+    public Button startScreenButton;
     void Awake()
     {
         instance = this;
+        isPaused = true;
+        pauseScreen.SetActive(false);
     }
 
     void Update()
     {
         UIhealthBar.fillAmount = heroHealth / 10;
+        if (Input.GetKeyDown("escape")) 
+        {
+            PauseUnpause();
+            pauseScreen.SetActive(isPaused);
+        }
+    }
+    public void PauseUnpause()
+    {
+        isPaused = !isPaused;
+        if (isPaused == false)
+        {
+            Debug.Log("Unpaused game");
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Debug.Log("Paused game");
+            Time.timeScale = 0;
+        }
     }
 }

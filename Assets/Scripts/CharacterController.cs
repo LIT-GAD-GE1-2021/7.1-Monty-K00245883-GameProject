@@ -30,9 +30,13 @@ public class CharacterController : MonoBehaviour
     }
     void Update()
     {
-        MoveLeftRight();
-        Jump();
-        Duck();
+        if (LevelManager.isPaused == false)
+        {
+            MoveLeftRight();
+            Jump();
+            Duck();
+        }
+
         GroundCheck();
         HeadCheck();
     }
@@ -98,7 +102,7 @@ public class CharacterController : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && LevelManager.isPaused == false)
         {
             if (facingRight)
             {
