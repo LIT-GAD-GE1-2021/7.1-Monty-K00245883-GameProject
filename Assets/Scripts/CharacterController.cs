@@ -100,18 +100,24 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         heroSR.color = new Color(1, 1, 1, 1);
     }
+    void KnockBack()
+    {
+        if (facingRight)
+        {
+            heroRB.AddForce(Vector2.left * LevelManager.instance.enemyKnockback, ForceMode2D.Impulse);
+            Debug.Log("knocked back left");
+        }
+        else
+        {
+            heroRB.AddForce(Vector2.right * LevelManager.instance.enemyKnockback, ForceMode2D.Impulse);
+            Debug.Log("knocked back right");
+        }
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && LevelManager.isPaused == false)
         {
-            if (facingRight)
-            {
-                heroRB.AddForce(Vector2.left * LevelManager.instance.enemyKnockback, ForceMode2D.Impulse);
-            }
-            else
-            {
-                heroRB.AddForce(Vector2.right * LevelManager.instance.enemyKnockback, ForceMode2D.Impulse);
-            }
+            KnockBack();
             StartCoroutine(FlashDamage());
             if (collision.gameObject.name == "Rat")
             {
