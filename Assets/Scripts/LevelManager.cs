@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     public float heroSpeed = 5;
     public float heroJumpForce = 10;
     public Color heroDMGColour;
-    public Image UIhealthBar;
+    public Image UIHealthBar;
     public GameObject pauseScreen;
     public Button startScreenButton;
     void Awake()
@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        UIhealthBar.fillAmount = heroHealth / 10;
+        UIHealthBar.fillAmount = heroHealth / 10;
         if (Input.GetKeyDown("escape")) 
         {
             PauseUnpause();
