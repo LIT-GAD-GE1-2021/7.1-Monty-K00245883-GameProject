@@ -7,7 +7,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public static bool isPaused;
-    public float enemyKnockback = 5;
+    public float enemyVKnockback = 5;
+    public float enemyHKnockback = 5;
     public float batDamage = 1;
     public float ratDamage = 2;
     public float heroHealth = 10;
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour
             PauseUnpause();
             pauseScreen.SetActive(isPaused);
         }
+
     }
     public void PauseUnpause()
     {
