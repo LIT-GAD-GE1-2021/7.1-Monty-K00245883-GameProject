@@ -19,15 +19,16 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        if (PlayerPrefs.HasKey("Health") == false)
+       /** if (PlayerPrefs.HasKey("Coins") == false)
         {
-            PlayerPrefs.SetInt("Health", 10);
-            LevelManager.instance.heroHealth = 10;
+            PlayerPrefs.SetInt("Coins", 0);
+            LevelManager.instance.coinCount = 0;
         }
         else
         {
-            LevelManager.instance.heroHealth = PlayerPrefs.GetInt("Health");
+            LevelManager.instance.coinCount = PlayerPrefs.GetInt("Coins");
         }
+       **/
     }
     void Update()
     {
