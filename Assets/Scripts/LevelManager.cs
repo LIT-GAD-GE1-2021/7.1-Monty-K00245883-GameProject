@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public static bool isPaused;
+    public bool hasPick;
+    public bool hasRope;
     public float enemyVKnockback = 5;
     public float enemyHKnockback = 5;
     public float batDamage = 1;
@@ -17,6 +19,8 @@ public class LevelManager : MonoBehaviour
     public int coinCount = 0;
     public Color heroDMGColour;
     public Image UIHealthBar;
+    public Image UIPickIcon;
+    public Image UIRopeIcon;
     public Text UICoinCounter;
     public GameObject pauseScreen;
     public Button startScreenButton;
@@ -26,6 +30,8 @@ public class LevelManager : MonoBehaviour
         isPaused = true;
         pauseScreen.SetActive(false);
         heroHealth = 10;
+        hasPick = false;
+        hasRope = false;
     }
 
     void Update()
@@ -33,7 +39,7 @@ public class LevelManager : MonoBehaviour
         //PlayerPrefs.SetInt("Coins", coinCount);
         UICoinCounter.text = "x" + coinCount;
         UIHealthBar.fillAmount = heroHealth / 10;
-
+        InventoryCheck();
         
         if (Input.GetKeyDown("escape")) 
         {
@@ -41,6 +47,27 @@ public class LevelManager : MonoBehaviour
             pauseScreen.SetActive(isPaused);
         }
 
+    }
+    private void InventoryCheck()
+    {
+        Color invisibleColour = Color.clear;
+        Color visibleColour = Color.white;
+        if (hasPick)
+        {
+            UIPickIcon.color = visibleColour;
+        }
+        else
+        {
+            UIPickIcon.color = invisibleColour;
+        }
+        if (hasRope)
+        {
+            UIRopeIcon.color = visibleColour;
+        }
+        else
+        {
+            UIRopeIcon.color = invisibleColour;
+        }
     }
     public void PauseUnpause()
     {

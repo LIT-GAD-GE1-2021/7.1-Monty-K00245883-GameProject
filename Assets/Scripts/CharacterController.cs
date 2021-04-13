@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     private Transform heroPivot;
     public Transform groundCheck;
     public Transform headCheck;
+    public Animator fxAnimator;
 
     void Start()
     {
@@ -35,11 +36,13 @@ public class CharacterController : MonoBehaviour
             MoveLeftRight();
             Jump();
             Duck();
+            Action();
             if (LevelManager.instance.heroHealth <= 0)
             {
                 StartCoroutine(KillHero());
             }
         }
+        InventoryCheck();
         GroundCheck();
         HeadCheck();
     }
@@ -79,6 +82,15 @@ public class CharacterController : MonoBehaviour
                 heroAnimator.SetBool("Duck", false);
             }
         }
+    void Action()
+    {
+        
+        if (Input.GetButtonDown("Fire1") && LevelManager.instance.hasPick)
+        {
+            heroAnimator.SetTrigger("Attack");
+            fxAnimator.SetTrigger("attackFX");
+        }
+    }
     void GroundCheck()
         {
             Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
@@ -117,6 +129,17 @@ public class CharacterController : MonoBehaviour
 
             }
         }
+    void InventoryCheck()
+    {
+        if (LevelManager.instance.hasPick)
+        {
+            heroAnimator.SetBool("Pick", true);
+        }
+        else
+        {
+            heroAnimator.SetBool("Pick", false);
+        }
+    }
     IEnumerator KillHero()
     {
         heroAnimator.SetTrigger("Die");
