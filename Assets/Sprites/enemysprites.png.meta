@@ -88,16 +88,16 @@ TextureImporter:
     second: get_5
   - first:
       213: 5378264795023810020
-    second: door_closed
+    second: door
   - first:
       213: 8570154103693470846
-    second: door_open
+    second: sign
   - first:
       213: 3899636861676446971
     second: boulder
   - first:
       213: -7956553813466696490
-    second: conveyor_b_2
+    second: pipe
   - first:
       213: -1090702644864205878
     second: conveyor_b_1
@@ -373,7 +373,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 25
-        y: 67
+        y: 68
         width: 12
         height: 14
       alignment: 0
@@ -810,12 +810,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_closed
+      name: door
       rect:
         serializedVersion: 2
-        x: 80
-        y: 17
-        width: 16
+        x: 89
+        y: 20
+        width: 8
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -831,13 +831,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: door_open
+      name: sign
       rect:
         serializedVersion: 2
-        x: 96
-        y: 17
-        width: 16
-        height: 32
+        x: 40
+        y: 20
+        width: 29
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -855,8 +855,8 @@ TextureImporter:
       name: boulder
       rect:
         serializedVersion: 2
-        x: 64
-        y: 19
+        x: 55
+        y: 1
         width: 13
         height: 13
       alignment: 0
@@ -873,13 +873,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: conveyor_b_2
+      name: pipe
       rect:
         serializedVersion: 2
-        x: 52
-        y: 20
-        width: 11
-        height: 11
+        x: 74
+        y: 16
+        width: 8
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -894,31 +894,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: conveyor_b_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 20
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acb3a4929bb0dd0f0800000000000000
-      internalID: -1090702644864205878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: hook
       rect:
         serializedVersion: 2
-        x: 46
+        x: 42
         y: 0
         width: 9
         height: 18
@@ -1003,11 +982,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 10
+        y: 7
         width: 16
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1044,10 +1023,10 @@ TextureImporter:
       name: conveyor_a_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 50
-        width: 11
-        height: 12
+        x: 23
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1065,10 +1044,10 @@ TextureImporter:
       name: conveyor_a_3
       rect:
         serializedVersion: 2
-        x: 40
-        y: 50
-        width: 11
-        height: 12
+        x: 39
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1086,10 +1065,10 @@ TextureImporter:
       name: conveyor_a_2
       rect:
         serializedVersion: 2
-        x: 25
-        y: 38
-        width: 11
-        height: 11
+        x: 23
+        y: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1108,9 +1087,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 39
-        y: 38
-        width: 12
-        height: 11
+        y: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1128,10 +1107,10 @@ TextureImporter:
       name: conveyor_a_5
       rect:
         serializedVersion: 2
-        x: 52
-        y: 38
-        width: 11
-        height: 11
+        x: 55
+        y: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1149,10 +1128,10 @@ TextureImporter:
       name: conveyor_a_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 38
-        width: 12
-        height: 11
+        x: 71
+        y: 36
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

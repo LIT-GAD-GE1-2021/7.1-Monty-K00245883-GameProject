@@ -13,7 +13,9 @@ public class LevelManager : MonoBehaviour
     public float enemyHKnockback = 5;
     public float batDamage = 1;
     public float ratDamage = 2;
+    public float spikeDamage = 1;
     public float heroSpeed = 5;
+    public float oilSpeed = 10;
     public float heroJumpForce = 10;
     public float heroHealth = 10;
     public int coinCount = 0;

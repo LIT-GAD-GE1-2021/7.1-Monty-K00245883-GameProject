@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
     private bool knockingBack = false;
     public bool isGrounded;
     public bool facingRight;
+    public bool onOil = false;
     public Rigidbody2D heroRB;
     public GameObject hero;
     private Animator heroAnimator;
@@ -31,7 +32,7 @@ public class CharacterController : MonoBehaviour
     }
     void Update()
     {
-        if (LevelManager.isPaused == false && knockingBack == false && dead == false)
+        if (LevelManager.isPaused == false && knockingBack == false && dead == false && onOil == false)
         {
             MoveLeftRight();
             Jump();
@@ -42,12 +43,14 @@ public class CharacterController : MonoBehaviour
                 StartCoroutine(KillHero());
             }
         }
+        OilSlide();
         InventoryCheck();
         GroundCheck();
         HeadCheck();
     }
     public void MoveLeftRight()
-        {
+    {
+
             move = Input.GetAxis("Horizontal");
             heroAnimator.SetFloat("Speed", Mathf.Abs(move));
             heroRB.velocity = new Vector2(move * LevelManager.instance.heroSpeed, heroRB.velocity.y);
@@ -59,7 +62,22 @@ public class CharacterController : MonoBehaviour
             {
                 Flip();
             }
+
+    }
+    void OilSlide()
+    {
+        if (onOil)
+        {
+            if (facingRight)
+            {
+                heroRB.velocity = new Vector2(LevelManager.instance.oilSpeed, heroRB.velocity.y);
+            }
+            else
+            {
+                heroRB.velocity = new Vector2(-LevelManager.instance.oilSpeed, heroRB.velocity.y);
+            }
         }
+    }
     void Jump()
         {
             heroAnimator.SetFloat("VSpeed", heroRB.velocity.y);
@@ -109,7 +127,7 @@ public class CharacterController : MonoBehaviour
             heroPivot.transform.localScale = theScale;
         }
     void OnCollisionEnter2D(Collision2D collision)
-        {
+    {
             if (LevelManager.isPaused == false && dead == false)
             {
                 if (collision.gameObject.tag == "Enemy" && collision.collider is PolygonCollider2D)
@@ -126,9 +144,29 @@ public class CharacterController : MonoBehaviour
                         Debug.Log(LevelManager.instance.heroHealth);
                     }
                 }
-
+                if (collision.gameObject.name == "Spikes")
+                 {
+                     StartCoroutine(DamageHero());
+                     LevelManager.instance.heroHealth -= LevelManager.instance.spikeDamage;
+                     Debug.Log(LevelManager.instance.heroHealth);
+                 }
+                if (collision.gameObject.name == "SlipperyFloors")
+                 {
+                    onOil = true;
+                 }
+                else
+                {
+                    onOil = false;
+                }
             }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "SlipperyFloors")
+        {
+            onOil = false;
         }
+    }
     void InventoryCheck()
     {
         if (LevelManager.instance.hasPick)
@@ -144,7 +182,7 @@ public class CharacterController : MonoBehaviour
     {
         heroAnimator.SetTrigger("Die");
         dead = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         LevelManager.instance.PauseUnpause();
         //activate main menu
     }
