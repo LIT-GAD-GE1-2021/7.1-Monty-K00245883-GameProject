@@ -32,6 +32,7 @@ public class CharacterController : MonoBehaviour
     }
     void Update()
     {
+        //the controller will only accept input under certain conditions:
         if (LevelManager.isPaused == false && knockingBack == false && dead == false && onOil == false)
         {
             MoveLeftRight();
@@ -70,10 +71,14 @@ public class CharacterController : MonoBehaviour
         {
             if (facingRight)
             {
+                //this is the same as the movement script but the input has been removed
+                //the character will keep moving in their starting direction until they've slid off the oil
                 heroRB.velocity = new Vector2(LevelManager.instance.oilSpeed, heroRB.velocity.y);
             }
             else
             {
+                //because the move input has been removed, the code needs to manually check which direction
+                //the character is facing and move accordingly
                 heroRB.velocity = new Vector2(-LevelManager.instance.oilSpeed, heroRB.velocity.y);
             }
         }
@@ -110,11 +115,11 @@ public class CharacterController : MonoBehaviour
         }
     }
     void GroundCheck()
-        {
-            Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-            isGrounded = (bool)colliderWeCollidedWith;
-            heroAnimator.SetBool("Ground", isGrounded);
-        }
+    {
+         Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+         isGrounded = (bool)colliderWeCollidedWith;
+         heroAnimator.SetBool("Ground", isGrounded);
+    }
     void HeadCheck()
         {
             Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(headCheck.position, headRadius, whatIsGround);
@@ -130,10 +135,11 @@ public class CharacterController : MonoBehaviour
     {
             if (LevelManager.isPaused == false && dead == false)
             {
+                //this checks if the character has collided with the main collider of the enemy, which is the polygon collider
                 if (collision.gameObject.tag == "Enemy" && collision.collider is PolygonCollider2D)
                 {
                     StartCoroutine(DamageHero());
-                    if (collision.gameObject.name == "Rat")
+                    if (collision.gameObject.name == "Rat" | collision.gameObject.name == "PlatformRat")
                     {
                         LevelManager.instance.heroHealth -= LevelManager.instance.ratDamage;
                         Debug.Log(LevelManager.instance.heroHealth);

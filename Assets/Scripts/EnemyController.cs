@@ -41,16 +41,22 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-   private void OnCollisionEnter2D(Collision2D collision)
-   {
-        //the reason this checks what kind of collider is being used is because there are two colliders attached to the enemy.
-        //there's a polygon collider to determine whether the character has collided and a box collider which is positioned
-        //specifically on the sprite to check if the front of the enemy has hit something
-        if (collision.otherCollider is BoxCollider2D)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (this.gameObject.name != "PlatformRat")
         {
+            Debug.Log("bat or rat has collided with a wall");
             Flip();
         }
-   }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (this.gameObject.name == "PlatformRat")
+        {
+            Debug.Log("platformrat reached the edge of a ledge");
+            Flip();
+        }
+    }
     void Flip()
    {
        facingRight = !facingRight;
