@@ -13,11 +13,14 @@ public class LevelManager : MonoBehaviour
     public float enemyHKnockback = 5;
     public float batDamage = 1;
     public float ratDamage = 2;
+    public float batHealth = 1;
+    public float ratHealth = 2;
     public float spikeDamage = 1;
     public float heroSpeed = 5;
     public float oilSpeed = 10;
     public float heroJumpForce = 10;
     public float heroHealth = 10;
+    public float heroDamage = 1;
     public int coinCount = 0;
     public Color heroDMGColour;
     public Image UIHealthBar;
@@ -26,6 +29,7 @@ public class LevelManager : MonoBehaviour
     public Text UICoinCounter;
     public GameObject pauseScreen;
     public Button startScreenButton;
+    private EnemyController enemyCtrl;
     void Awake()
     {
         instance = this;
@@ -85,4 +89,5 @@ public class LevelManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
 }

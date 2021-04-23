@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Rigidbody2D enemyRB;
+    private Rigidbody2D enemyRB;
+    private Animator enemyAnimator;
+    private SpriteRenderer enemySR;
+    private GameObject enemy;
+    public float enemyHealth;
     private bool facingRight;
     private Transform enemyPivot;
     public float enemySpeed;
     void Start()
     {
-        Vector3 startingDirection;
+        enemyRB = this.GetComponent<Rigidbody2D>();
+        enemySR = this.GetComponent<SpriteRenderer>();
+        enemyAnimator = this.GetComponent<Animator>();
+        enemy = this.gameObject;
+        enemyAnimator.SetBool("Die", false);
         enemyPivot = this.GetComponent<Transform>();
-        startingDirection = enemyPivot.transform.localScale;
+        Vector3 startingDirection = enemyPivot.transform.localScale;
         if (startingDirection.x == 1)
         {
             facingRight = false;
@@ -21,12 +29,24 @@ public class EnemyController : MonoBehaviour
         {
             facingRight = true;
         }
+        if (this.gameObject.name == "PlatformRat" | this.gameObject.name == "Rat")
+        {
+            enemyHealth = LevelManager.instance.ratHealth;
+        }
+        if (this.gameObject.name == "Bat")
+        {
+            enemyHealth = LevelManager.instance.batHealth;
+        }
     }
     void Update()
     {
         if (LevelManager.isPaused == false)
         {
             Patrol();
+        }
+        if (enemyHealth <= 0)
+        {
+             KillEnemy();
         }
     }
     void Patrol()
@@ -41,9 +61,40 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    void KillEnemy()
+    {
+        Debug.Log("Enemy killed");
+        enemyAnimator.SetBool("Die", true);
+    }
+    public void DestroyEnemy()
+    {
+        Destroy(enemy);
+    }
+    IEnumerator DamageEnemy()
+    {
+        enemyHealth -= LevelManager.instance.heroDamage;
+        enemySR.color = LevelManager.instance.heroDMGColour;
+        if (facingRight)
+        {
+            enemyRB.velocity = new Vector2(LevelManager.instance.enemyHKnockback, -LevelManager.instance.enemyVKnockback);
+        }
+        else
+        {
+            enemyRB.velocity = new Vector2(LevelManager.instance.enemyHKnockback, LevelManager.instance.enemyVKnockback);
+        }
+        yield return new WaitForSeconds(0.5f);
+        enemySR.color = new Color(1, 1, 1, 1);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider is BoxCollider2D && collision.gameObject.tag == "Player")
+        {
+            StartCoroutine(DamageEnemy());
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.gameObject.name != "PlatformRat")
+        if (this.gameObject.name != "PlatformRat" && collision.gameObject.name == "GroundMap")
         {
             Debug.Log("bat or rat has collided with a wall");
             Flip();
@@ -51,7 +102,7 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (this.gameObject.name == "PlatformRat")
+        if (this.gameObject.name == "PlatformRat" && collision.gameObject.tag == "Ground")
         {
             Debug.Log("platformrat reached the edge of a ledge");
             Flip();

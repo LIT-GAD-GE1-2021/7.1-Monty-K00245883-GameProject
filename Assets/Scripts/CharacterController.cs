@@ -38,7 +38,7 @@ public class CharacterController : MonoBehaviour
             MoveLeftRight();
             Jump();
             Duck();
-            Action();
+            StartCoroutine(Action());
             if (LevelManager.instance.heroHealth <= 0)
             {
                 StartCoroutine(KillHero());
@@ -105,13 +105,19 @@ public class CharacterController : MonoBehaviour
                 heroAnimator.SetBool("Duck", false);
             }
         }
-    void Action()
+
+    IEnumerator Action()
     {
-        
         if (Input.GetButtonDown("Fire1") && LevelManager.instance.hasPick)
         {
-            heroAnimator.SetTrigger("Attack");
-            fxAnimator.SetTrigger("attackFX");
+            if (isGrounded)
+            {
+                heroAnimator.SetBool("Attack", true);
+                fxAnimator.SetTrigger("attackFX");
+                yield return new WaitForSeconds(.5f);
+                heroAnimator.SetBool("Attack", false);
+            }
+
         }
     }
     void GroundCheck()
@@ -133,7 +139,7 @@ public class CharacterController : MonoBehaviour
         }
     void OnCollisionEnter2D(Collision2D collision)
     {
-            if (LevelManager.isPaused == false && dead == false)
+        if (LevelManager.isPaused == false && dead == false)
             {
                 //this checks if the character has collided with the main collider of the enemy, which is the polygon collider
                 if (collision.gameObject.tag == "Enemy" && collision.collider is PolygonCollider2D)
@@ -164,7 +170,7 @@ public class CharacterController : MonoBehaviour
                 {
                     onOil = false;
                 }
-            }
+            }      
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
