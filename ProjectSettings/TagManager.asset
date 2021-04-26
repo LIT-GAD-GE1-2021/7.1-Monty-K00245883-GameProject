@@ -9,6 +9,7 @@ TagManager:
   - Collectable
   - Spike
   - Switch
+  - Hazards
   layers:
   - Default
   - TransparentFX

@@ -158,7 +158,7 @@ public class CharacterController : MonoBehaviour
                         Debug.Log(LevelManager.instance.heroHealth);
                     }
                 }
-                if (collision.gameObject.name == "Spikes")
+                if (collision.gameObject.CompareTag("Hazards"))
                  {
                      StartCoroutine(DamageHero());
                      LevelManager.instance.heroHealth -= LevelManager.instance.spikeDamage;
