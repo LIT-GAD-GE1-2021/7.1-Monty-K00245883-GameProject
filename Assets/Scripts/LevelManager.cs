@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     public static bool isPaused;
     public bool hasPick;
     public bool hasRope;
+    public bool doorStatus;
+    public bool isActing;
     public float enemyVKnockback = 5;
     public float enemyHKnockback = 5;
     public float batDamage = 1;
@@ -29,7 +31,6 @@ public class LevelManager : MonoBehaviour
     public Text UICoinCounter;
     public GameObject pauseScreen;
     public Button startScreenButton;
-    private EnemyController enemyCtrl;
     void Awake()
     {
         instance = this;
@@ -46,14 +47,14 @@ public class LevelManager : MonoBehaviour
         UICoinCounter.text = "x" + coinCount;
         UIHealthBar.fillAmount = heroHealth / 10;
         InventoryCheck();
-        
-        if (Input.GetKeyDown("escape")) 
+
+        if (Input.GetKeyDown("escape"))
         {
             PauseUnpause();
             pauseScreen.SetActive(isPaused);
         }
 
-    }
+      }
     private void InventoryCheck()
     {
         Color invisibleColour = Color.clear;

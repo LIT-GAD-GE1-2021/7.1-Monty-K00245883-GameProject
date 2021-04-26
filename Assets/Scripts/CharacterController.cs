@@ -48,6 +48,7 @@ public class CharacterController : MonoBehaviour
         InventoryCheck();
         GroundCheck();
         HeadCheck();
+
     }
     public void MoveLeftRight()
     {
@@ -108,16 +109,17 @@ public class CharacterController : MonoBehaviour
 
     IEnumerator Action()
     {
-        if (Input.GetButtonDown("Fire1") && LevelManager.instance.hasPick)
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (isGrounded)
+            if (isGrounded && LevelManager.instance.hasPick)
             {
                 heroAnimator.SetBool("Attack", true);
                 fxAnimator.SetTrigger("attackFX");
                 yield return new WaitForSeconds(.5f);
                 heroAnimator.SetBool("Attack", false);
             }
-
+            
+            LevelManager.instance.isActing = true;
         }
     }
     void GroundCheck()
@@ -162,15 +164,7 @@ public class CharacterController : MonoBehaviour
                      LevelManager.instance.heroHealth -= LevelManager.instance.spikeDamage;
                      Debug.Log(LevelManager.instance.heroHealth);
                  }
-                if (collision.gameObject.name == "SlipperyFloors")
-                 {
-                    onOil = true;
-                 }
-                else
-                {
-                    onOil = false;
-                }
-            }      
+        }      
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -178,6 +172,18 @@ public class CharacterController : MonoBehaviour
         {
             onOil = false;
         }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "SlipperyFloors")
+        {
+            onOil = true;
+        }
+        else
+        {
+            onOil = false;
+        }
+
     }
     void InventoryCheck()
     {
