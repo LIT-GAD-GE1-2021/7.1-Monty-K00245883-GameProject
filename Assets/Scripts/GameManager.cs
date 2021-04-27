@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private int activeSceneIndex = 0;
+
 
     private void Awake()
     {
@@ -19,20 +21,30 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-       /** if (PlayerPrefs.HasKey("Coins") == false)
-        {
-            PlayerPrefs.SetInt("Coins", 0);
-            LevelManager.instance.coinCount = 0;
-        }
-        else
-        {
-            LevelManager.instance.coinCount = PlayerPrefs.GetInt("Coins");
-        }
-       **/
+
     }
     void Update()
     {
 
     }
 
+    public void LoadNextScene()
+    {
+        Debug.Log("Continuing...");
+        activeSceneIndex++;
+
+        activeSceneIndex = activeSceneIndex % SceneManager.sceneCountInBuildSettings;
+
+        SceneManager.LoadScene(activeSceneIndex);
+    }
+    public void StartNewGame()
+    {
+        Debug.Log("Starting new game...");
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(1);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
