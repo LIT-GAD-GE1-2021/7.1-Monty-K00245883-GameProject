@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
         {
             PauseUnpause();
             pauseScreen.SetActive(isPaused);
+            
         }
 
       }
