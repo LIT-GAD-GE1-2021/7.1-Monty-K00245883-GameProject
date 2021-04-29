@@ -6,11 +6,19 @@ public class SwitchController : MonoBehaviour
 {
     public bool switchFlipped;
     private Animator switchAnimator;
+    public GameObject connectedObject;
+    public bool isSpawnerSwitch;
+    private ItemSpawner spawnControl;
+    private AudioSource switchSound;
+
     // Start is called before the first frame update
     void Start()
     {
         switchFlipped = false;
         switchAnimator = GetComponent<Animator>();
+        switchSound = GetComponent<AudioSource>();
+        spawnControl = connectedObject.GetComponent<ItemSpawner>();
+
     }
 
     // Update is called once per frame
@@ -23,6 +31,7 @@ public class SwitchController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && Input.GetButtonDown("Fire1"))
         {
             FlipSwitch();
+            switchSound.Play();
         }
     }
     public void FlipSwitch()
@@ -30,5 +39,10 @@ public class SwitchController : MonoBehaviour
         Debug.Log("Switch flipped");
         switchFlipped = !switchFlipped;
         switchAnimator.SetBool("Up", switchFlipped);
+        if (isSpawnerSwitch)
+        {
+            spawnControl.SpawnOnSwitch();
+        }
     }
+   
 }

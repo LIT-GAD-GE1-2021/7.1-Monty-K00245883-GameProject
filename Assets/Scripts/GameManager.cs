@@ -40,11 +40,17 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         Debug.Log("Starting new game...");
-        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(1);
     }
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void MainMenu()
+    {
+        Debug.Log("Returning to main menu...");
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
         enemy = this.gameObject;
         enemyAnimator.SetBool("Die", false);
         enemyPivot = this.GetComponent<Transform>();
+        //determines whether the enemy is facing right or not
         Vector3 startingDirection = enemyPivot.transform.localScale;
         if (startingDirection.x == 1)
         {
@@ -29,6 +30,7 @@ public class EnemyController : MonoBehaviour
         {
             facingRight = true;
         }
+        //sets the enemy's health according to type of enemy
         if (this.gameObject.name == "PlatformRat" | this.gameObject.name == "Rat")
         {
             enemyHealth = LevelManager.instance.ratHealth;
@@ -87,6 +89,7 @@ public class EnemyController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //checks if the character's hitbox has collided with the enemy
         if (collision.collider is BoxCollider2D && collision.gameObject.tag == "Player")
         {
             StartCoroutine(DamageEnemy());

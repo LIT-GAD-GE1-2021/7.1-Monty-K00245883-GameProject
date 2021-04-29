@@ -201,8 +201,7 @@ public class CharacterController : MonoBehaviour
         heroAnimator.SetTrigger("Die");
         dead = true;
         yield return new WaitForSeconds(1f);
-        LevelManager.instance.PauseUnpause();
-        //activate main menu
+        GameManager.instance.MainMenu();
     }
     IEnumerator DamageHero()
         {

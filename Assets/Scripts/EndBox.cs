@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class EndBox : MonoBehaviour
 {
     public GameObject endScreen;
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -18,6 +17,7 @@ public class EndBox : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            LevelManager.instance.PauseUnpause();
             endScreen.SetActive(true);
         }
     }

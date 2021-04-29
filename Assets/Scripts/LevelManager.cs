@@ -43,7 +43,6 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        //PlayerPrefs.SetInt("Coins", coinCount);
         UICoinCounter.text = "x" + coinCount;
         UIHealthBar.fillAmount = heroHealth / 10;
         InventoryCheck();
