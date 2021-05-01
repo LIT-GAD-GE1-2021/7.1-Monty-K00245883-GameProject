@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    public AudioSource levelAudio;
+    public AudioClip dingSound;
     public static bool isPaused;
     public bool hasPick;
     public bool hasRope;
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        levelAudio = GetComponent<AudioSource>();
         isPaused = true;
         pauseScreen.SetActive(false);
         heroHealth = 10;
@@ -90,5 +93,8 @@ public class LevelManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
-
+    public void DingSound()
+    {
+        levelAudio.PlayOneShot(dingSound);
+    }
 }

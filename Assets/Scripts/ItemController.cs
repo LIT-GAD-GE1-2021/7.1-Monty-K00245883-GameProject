@@ -5,13 +5,11 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     private Animator itemAnimator;
-    private AudioSource itemAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         itemAnimator = this.GetComponent<Animator>();
-        itemAudio = this.GetComponent<AudioSource>();
-
         if (this.gameObject.name == "Coin")
         {
             itemAnimator.SetBool("isCoin", true);
@@ -27,7 +25,7 @@ public class ItemController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             itemAnimator.SetBool("Get", true);
-            itemAudio.Play();
+            LevelManager.instance.DingSound();
             if (this.gameObject.name == "Coin")
             {
                 LevelManager.instance.coinCount++;

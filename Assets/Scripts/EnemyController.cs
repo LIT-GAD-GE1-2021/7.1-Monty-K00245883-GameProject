@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private Rigidbody2D enemyRB;
-    private Animator enemyAnimator;
-    private SpriteRenderer enemySR;
-    private GameObject enemy;
     public float enemyHealth;
     private bool facingRight;
-    private Transform enemyPivot;
     public float enemySpeed;
+    private Rigidbody2D enemyRB;
     void Start()
     {
         enemyRB = this.GetComponent<Rigidbody2D>();
-        enemySR = this.GetComponent<SpriteRenderer>();
-        enemyAnimator = this.GetComponent<Animator>();
-        enemy = this.gameObject;
-        enemyAnimator.SetBool("Die", false);
-        enemyPivot = this.GetComponent<Transform>();
-        //determines whether the enemy is facing right or not
-        Vector3 startingDirection = enemyPivot.transform.localScale;
-        if (startingDirection.x == 1)
+
+        OrientEnemy();
+        AssignHealth();
+        Patrol();
+    }
+    void Update()
+    {
+        if (enemyHealth <= 0)
         {
-            facingRight = false;
+             KillEnemy();
+        }
+
+    }
+    private void FixedUpdate()
+    {
+        if (facingRight)
+        {
+            enemyRB.velocity = Vector2.right * enemySpeed;
         }
         else
         {
-            facingRight = true;
+            enemyRB.velocity = Vector2.left * enemySpeed;
         }
-        //sets the enemy's health according to type of enemy
+    }
+    void Patrol()
+    {
+
+    }
+
+    void AssignHealth()
+    {
         if (this.gameObject.name == "PlatformRat" | this.gameObject.name == "Rat")
         {
             enemyHealth = LevelManager.instance.ratHealth;
@@ -40,40 +51,34 @@ public class EnemyController : MonoBehaviour
             enemyHealth = LevelManager.instance.batHealth;
         }
     }
-    void Update()
+    void OrientEnemy()
     {
-        if (LevelManager.isPaused == false)
+        Transform enemyPivot = this.GetComponent<Transform>();
+        Vector3 startingDirection = enemyPivot.transform.localScale;
+        if (startingDirection.x == 1)
         {
-            Patrol();
-        }
-        if (enemyHealth <= 0)
-        {
-             KillEnemy();
-        }
-    }
-    void Patrol()
-    {
-        if (facingRight)
-        {
-            enemyRB.AddForce(Vector2.right * enemySpeed);
+            facingRight = false;
         }
         else
         {
-            enemyRB.AddForce(Vector2.left * enemySpeed);
+            facingRight = true;
         }
-    }
 
+    }
     void KillEnemy()
     {
+        Animator enemyAnimator = this.GetComponent<Animator>();
         Debug.Log("Enemy killed");
         enemyAnimator.SetBool("Die", true);
     }
     public void DestroyEnemy()
     {
+        GameObject enemy = this.gameObject;
         Destroy(enemy);
     }
     IEnumerator DamageEnemy()
     {
+        SpriteRenderer enemySR = this.GetComponent<SpriteRenderer>();
         enemyHealth -= LevelManager.instance.heroDamage;
         enemySR.color = LevelManager.instance.heroDMGColour;
         if (facingRight)
@@ -90,33 +95,28 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //checks if the character's hitbox has collided with the enemy
-        if (collision.collider is BoxCollider2D && collision.gameObject.tag == "Player")
+        if (collision.collider is BoxCollider2D && collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(DamageEnemy());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.gameObject.name != "PlatformRat" && collision.gameObject.name == "GroundMap")
+        if (collision.gameObject.CompareTag("Ground") | collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("bat or rat has collided with a wall");
+            Debug.Log(this.gameObject.name + " has collided with a wall");
             Flip();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (this.gameObject.name == "PlatformRat" && collision.gameObject.tag == "Ground")
-        {
-            Debug.Log("platformrat reached the edge of a ledge");
-            Flip();
-        }
-    }
+
     void Flip()
    {
-       facingRight = !facingRight;
-       Vector3 theScale = enemyPivot.transform.localScale;
-       theScale.x *= -1;
-       enemyPivot.transform.localScale = theScale;
+        facingRight = !facingRight;
+        Transform enemyPivot = this.GetComponent<Transform>();
+        Vector3 theScale = enemyPivot.transform.localScale;
+        theScale.x *= -1;
+        enemyPivot.transform.localScale = theScale;
+        Patrol();
    }
 
 }

@@ -16,8 +16,8 @@ public class CharacterController : MonoBehaviour
     public Rigidbody2D heroRB;
     public GameObject hero;
     private Animator heroAnimator;
-    private SpriteRenderer heroSR;
     public LayerMask whatIsGround;
+    public LayerMask whatIsOil;
     private Transform heroPivot;
     public Transform groundCheck;
     public Transform headCheck;
@@ -27,7 +27,6 @@ public class CharacterController : MonoBehaviour
     {
         heroAnimator = hero.GetComponent<Animator>();
         heroPivot = hero.GetComponent<Transform>();
-        heroSR = hero.GetComponent<SpriteRenderer>();
         facingRight = true;
     }
     void Update()
@@ -47,6 +46,7 @@ public class CharacterController : MonoBehaviour
         OilSlide();
         InventoryCheck();
         GroundCheck();
+        OilCheck();
         HeadCheck();
 
     }
@@ -128,6 +128,11 @@ public class CharacterController : MonoBehaviour
          isGrounded = (bool)colliderWeCollidedWith;
          heroAnimator.SetBool("Ground", isGrounded);
     }
+    void OilCheck()
+    {
+        Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsOil);
+        onOil = (bool)colliderWeCollidedWith;
+    }
     void HeadCheck()
         {
             Collider2D colliderWeCollidedWith = Physics2D.OverlapCircle(headCheck.position, headRadius, whatIsGround);
@@ -173,18 +178,7 @@ public class CharacterController : MonoBehaviour
             onOil = false;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "SlipperyFloors")
-        {
-            onOil = true;
-        }
-        else
-        {
-            onOil = false;
-        }
 
-    }
     void InventoryCheck()
     {
         if (LevelManager.instance.hasPick)
@@ -205,6 +199,7 @@ public class CharacterController : MonoBehaviour
     }
     IEnumerator DamageHero()
         {
+            SpriteRenderer heroSR = GetComponent<SpriteRenderer>();
             knockingBack = true;
             heroSR.color = LevelManager.instance.heroDMGColour;
             if (facingRight)

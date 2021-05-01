@@ -5,12 +5,8 @@ using UnityEngine;
 public class RockController : MonoBehaviour
 {
     private ParticleSystem particleEmitter;
-    private GameObject theRock;
-    private Animator rockAnimator;
     void Start()
     {
-        theRock = this.gameObject;
-        rockAnimator = GetComponent<Animator>();
         particleEmitter = GetComponent<ParticleSystem>();
         particleEmitter.Stop();
     }
@@ -22,10 +18,12 @@ public class RockController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         particleEmitter.Play();
+        Animator rockAnimator = GetComponent<Animator>();
         rockAnimator.SetBool("Die", true);
     }
     public void DestroyRock()
     {
+        GameObject theRock = this.gameObject;
         Destroy(theRock);
     }
 }
