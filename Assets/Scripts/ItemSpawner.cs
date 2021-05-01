@@ -5,8 +5,8 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour
 {
     public GameObject itemPrefab;
-    private Vector3 spawnPoint;
     public float itemInterval = 1f;
+    private Vector3 spawnPoint;
     public bool switchControlled = false;
     public bool switchOn = false;
 

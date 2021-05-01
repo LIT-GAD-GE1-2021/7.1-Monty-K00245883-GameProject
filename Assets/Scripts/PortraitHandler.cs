@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PortraitHandler : MonoBehaviour
 {
-    private Animator portraitAnimator;
     void Start()
     {
-        portraitAnimator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -17,6 +16,7 @@ public class PortraitHandler : MonoBehaviour
     }
     public void AnimatePortrait()
     {
+        Animator portraitAnimator = GetComponent<Animator>();
         portraitAnimator.SetBool("Activated", true);
     }
 }
